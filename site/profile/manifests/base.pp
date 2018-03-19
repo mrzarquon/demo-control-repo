@@ -8,4 +8,12 @@ class profile::base {
     provider => puppet_gem,
   }
 
+  file { '/etc/motd':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    content => "hello from Cognizant",
+  }
+
+
 }
