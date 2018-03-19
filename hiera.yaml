@@ -1,0 +1,20 @@
+---
+version: 5
+defaults:
+  datadir: data
+  data_hash: yaml_data
+hierarchy:
+  - name: 'Individual Node'
+    path: 'nodes/%{trusted.certname}.yaml'
+
+  - name: 'Region Role Specifics'
+    path: 'region/%{::ec2_region}/%{::role}.yaml'
+
+  - name: 'Role'
+    path: 'role/%{::role}.yaml'
+
+  - name: 'Region common data'
+    path: 'region/%{::ec2_region}/common.yaml'
+
+  - name: 'Common Data'
+    path: 'common.yaml'
