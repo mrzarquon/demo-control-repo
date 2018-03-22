@@ -1,7 +1,7 @@
 class profile::apache {
 
-  #the base profile should include component modules that will be on all nodes
+  # This is the apache php configuration generic for all systems
   include ::apache
-
+  include ::apache::mod::php
 
 }
