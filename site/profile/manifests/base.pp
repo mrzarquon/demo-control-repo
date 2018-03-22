@@ -12,7 +12,7 @@ class profile::base {
     ensure  => file,
     owner   => 'root',
     group   => 'root',
-    content => "hello from Cognizant",
+    content => 'Hello from Puppet\n',
   }
 
 

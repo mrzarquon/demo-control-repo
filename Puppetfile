@@ -10,5 +10,6 @@ mod 'puppetlabs/apache'
 mod 'puppetlabs/concat'
 mod 'puppetlabs/aws'
 mod 'puppetlabs/azure'
+mod 'puppetlabs/apt'
 #mod 'ec2tags',
 #  :git => 'https://github.com/mrzarquon/puppet-ec2tags.git'
