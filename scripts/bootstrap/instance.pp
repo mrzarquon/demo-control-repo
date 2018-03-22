@@ -6,6 +6,37 @@ gauth_credential { 'credentials':
   ],
 }
 
+gcompute_zone { 'us-west1-b':
+  project    => 'google.com:graphite-playground',
+  credential => 'credentials',
+}
+
+gcompute_disk { 'centos-os-1':
+  ensure       => present,
+  size_gb      => 50,
+  source_image =>
+    'projects/centos-cloud/global/images/centos-7-v20180314',
+  zone         => 'us-central1-a',
+  project      => 'google.com:gcp-migration-198519',
+  credential   => 'credentials',
+}
+
+gcompute_network { 'default':
+  ensure     => present,
+  project    => 'google.com:gcp-migration-198519',
+  credential => 'credentials',
+}
+
+gcompute_region { 'us-west1':
+  project    => 'google.com:gcp-migration-198519',
+  credential => 'credentials',
+}
+
+gcompute_machine_type { 'n1-standard-1':
+  zone       => 'us-west1-b',
+  project    => 'google.com:gcp-migration-198519',
+  credential => 'credentials',
+}
 
 gcompute_instance { 'webapp-cloud-leeloo':
   ensure             => present,
@@ -14,7 +45,7 @@ gcompute_instance { 'webapp-cloud-leeloo':
     {
       auto_delete => true,
       boot        => true,
-      source      => 'projects/centos-cloud/global/images/centos-7-v20180314'
+      source      => 'centos-os-1'
     }
   ],
   metadata           => {
