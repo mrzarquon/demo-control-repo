@@ -1,4 +1,4 @@
-class profile::apache {
+class profile::app {
 
   # This is the apache php configuration generic for all systems
   file { '/opt/myapp':
