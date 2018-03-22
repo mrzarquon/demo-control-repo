@@ -9,7 +9,6 @@ class profile::app {
   }
 
   apache::vhost { 'myapp':
-    vhost_name => '*',
     port    => '80',
     docroot => '/opt/myapp',
     aliases => [
@@ -18,6 +17,7 @@ class profile::app {
         path        => '/opt/myapp/status.php',
       },
     ],
+    default_vhost => true,
     require => Class['apache']
   }
 
