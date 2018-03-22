@@ -9,6 +9,7 @@ class profile::app {
   }
 
   apache::vhost { 'myapp':
+    vhost_name => '*',
     port    => '80',
     docroot => '/opt/myapp',
     aliases => [
