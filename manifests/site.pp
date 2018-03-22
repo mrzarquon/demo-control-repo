@@ -29,7 +29,7 @@ node default {
   # this allows us to auto include a role called
   # role::$pp_role tag
   # NOTE: This is cause a catalog to fail to compile if role::pp_role doesn't exist
-  if $trusted['extensions']['pp_role'] != undef {
-    include "role::${trusted['extensions']['pp_role']}"
-  }
+  #if $trusted['extensions']['pp_role'] != undef {
+  #  include "role::${trusted['extensions']['pp_role']}"
+  #}
 }
