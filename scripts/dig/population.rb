@@ -2,14 +2,7 @@
 
 require 'puppetdb'
 
-client = PuppetDB::Client.new({
-  :server => 'https://windows-nafkv3fxgzh7obof.eu-west-1.opsworks-cm.io:8081',
-  :pem => {
-    'ca_file' => 'working/ca.pem',
-    'key'     => "working/windows-nafkv3fxgzh7obof.eu-west-1.opsworks-cm.io.private.pem",
-    'cert'    => "working/windows-nafkv3fxgzh7obof.eu-west-1.opsworks-cm.io.pem",
-   }
-})
+client = PuppetDB::Client.new({:server => 'http://localhost:8080'})
 
 response = client.request(
   '',
