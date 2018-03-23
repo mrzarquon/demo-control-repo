@@ -17,3 +17,14 @@ sleep 10
 /opt/puppetlabs/bin/puppet agent -t
 sleep 10
 /opt/puppetlabs/bin/puppet agent -t
+
+
+#
+agent userdata
+#!/bin/bash
+PE_SERVER=$(curl "http://metadata.google.internal/computeMetadata/v1/instance/attributes/pe_server" -H "Metadata-Flavor: Google")
+PP_ROLE=$(curl "http://metadata.google.internal/computeMetadata/v1/instance/attributes/pp_role" -H "Metadata-Flavor: Google")
+
+certname="$(hostname).internal.company.lan"
+
+curl -k https://$PE_SERVER:8140/packages/current/install.bash | sudo bash -s agent:certname=$certname extension_requests:pp_role=$PP_ROLE
