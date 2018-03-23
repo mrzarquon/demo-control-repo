@@ -2,15 +2,39 @@
 
 require 'puppetdb'
 
-resourcechecksum = ARGV
+resourcechecksum = ARGV[0]
 
 
 client = PuppetDB::Client.new({:server => 'http://localhost:8080'})
 
 response = client.request(
   '',
-  "inventory[certname] {resource = \"#{resourcechecksum}\" }"
+  "resources[] { resource =\"#{resourcechecksum}\"}"
 )
 
 
-puts response.data
+response.data.first.each do |k,v|
+  if k == 'parameters'
+    puts "parameters => "
+    v.each do |param, value|
+      puts "#{param} => #{value}"
+    end
+  else
+    puts "#{k} => #{v}"
+  end
+end
+
+
+certnames = client.request(
+  '',
+  "nodes [certname] { resources {resource =\"#{resourcechecksum}\"} }"
+)
+
+nodes = []
+
+certnames.data.each do |certname|
+  nodes << certname['certname']
+end
+
+puts "All nodes that share this resource:"
+puts nodes
