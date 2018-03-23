@@ -1,0 +1,4 @@
+---
+  ntp::servers:
+  - 0.us.pool.ntp.org iburst
+  - 3.us.pool.ntp.org iburst
