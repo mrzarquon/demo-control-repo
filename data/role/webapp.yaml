@@ -1,0 +1,3 @@
+---
+  ntp::servers:
+  - metadata.google.internal iburst
